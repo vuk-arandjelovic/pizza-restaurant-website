@@ -1,0 +1,95 @@
+span.pure-popover[popover-content] {
+    // Pure Popover General Settings
+    $POPOVER_BACKGROUND_COLOR: rgba($WHITE, 80%); // Popover background color
+    $POPOVER_BORDER: 1px solid rgba($BLACK, 20%); // Popover border style
+    $POPOVER_BORDER_RADIUS: 25px; // Popover border radius
+    $POPOVER_FONT_SIZE: .75rem;
+    $POPOVER_FONT_COLOR: $BLACK;
+    $POPOVER_HEIGHT: 1.5rem;
+    $POPOVER_APEARANCE_SPEED: .15s;
+
+    // Pure Popover Offestes
+    $POPOVER_OFFSET: 1rem;
+    $POPOVER_OFFSETS: (
+        "xs": 8px,
+        "sm": 12px,
+        "md": 16px,
+        "lg": 24px,
+        "xl": 30px,
+    );
+
+    // Pure Popover
+    display: inline;
+    position: relative;
+    &::before {
+        content: attr(popover-content);
+        pointer-events: none;
+        position: absolute;
+        font-size: $POPOVER_FONT_SIZE;
+        height: $POPOVER_HEIGHT;
+        border: $POPOVER_BORDER;
+        background-color: $POPOVER_BACKGROUND_COLOR;
+        border-radius: $POPOVER_BORDER_RADIUS;
+        backdrop-filter: blur(4px);
+        white-space: nowrap;
+        padding: 3px 8px;
+        transition: opacity $POPOVER_APEARANCE_SPEED;
+        color: $POPOVER_FONT_COLOR;
+        opacity: 0;
+    }
+    &.placement {
+        &__top {
+            @each $name, $offset in $POPOVER_OFFSETS {
+                &.offset__#{$name}::before {
+                    top: math.floor($offset * -1.2);
+                }
+            }
+            &::before {
+                top: $POPOVER_OFFSET * -1.2;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        &__left {
+            @each $name, $offset in $POPOVER_OFFSETS {
+                &.offset__#{$name}::before {
+                    left: $offset * -1;
+                }
+            }
+            &::before {
+                left: $POPOVER_OFFSET * -1;
+                top: 50%;
+                transform: translate(-100%, -50%);
+            }
+        }
+        &__right {
+            @each $name, $offset in $POPOVER_OFFSETS {
+                &.offset__#{$name}::before {
+                    right: $offset * -1;
+                }
+            }
+            &::before {
+                right: $POPOVER_OFFSET * -1;
+                top: 50%;
+                transform: translate(100%, -50%);
+            }
+        }
+        &__bottom {
+            @each $name, $offset in $POPOVER_OFFSETS {
+                &.offset__#{$name}::before {
+                    bottom: math.floor($offset * -1.2);
+                }
+            }
+            &::before {
+                bottom: $POPOVER_OFFSET * -1.2;
+                left: 50%;
+                transform: translate(-50%, 50%);
+            }
+        }
+    }
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+    }
+}

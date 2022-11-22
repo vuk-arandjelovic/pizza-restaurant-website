@@ -1,0 +1,133 @@
+.form {
+    // Form General Settings
+    $FORM_BODY_BACKGROUND_COLOR: transparent; // Form background color
+    $FORM_BODY_PADDING: 0px 1.5rem 1.5rem; // Form body padding
+    $FORM_BODY_RADIUS: $RADIUS_BASE; // Form body radius
+    $FORM_BODY_SHADOW: 0 4px 10px -5px rgba($COLOR_PRIMARY, 80%); // Form body shadow (Set to none if you dont need it)
+    $FORM_BODY_BORDER: 1px solid rgba($COLOR_PRIMARY, 20%); // Form body border
+
+    // Form Intut General Settings
+    $INPUT_RADIUS: 20px; // Input's border radius
+    $INPUT_BORDER: 2px solid rgba($BLACK, 30%); // Input's border when inactive (Set size for border)
+    $INPUT_FOCUS_BORDER_COLOR: $COLOR_PRIMARY; // Input's border color on focus
+    $INPUT_FONT_COLOR: $BLACK; // Input's color when typing
+    $INPUT_FONT_SIZE: 1rem; // Input's font size
+    $INPUT_FONT_LINE_HEIGHT: $INPUT_FONT_SIZE * 1.5; // Input's line height
+    $INPUT_FONT_WEIGHT: 400; // Input's font weight
+    $INPUT_PADDING: 0.5625rem 1.125rem; // Input's padding (Bigger numbers = Bigger input field)
+    $INPUT_BOX_SHADOW: 0 0 0 0 transparent; // Input's boxshadow
+    $INPUT_PLACEHOLDER_COLOR: rgba(
+        $BODY_TEXT,
+        50%
+    ); // Input's placeholder color
+    $INPUT_ERROR_COLOR: $COLOR_ERROR; // Input's error color
+
+    // Form Disclaimer Paragraph Settings
+    $DISCLAIMER_FONT_COLOR: rgba($BLACK, 50%); // Disclaimers's color
+    $DISCLAIMER_FONT_SIZE: 14px; // Disclaimers's font size
+    $DISCLAIMER_ALIGNMENT: left; // Disclaimers's alignment [left, right, center, justify]
+
+    // Form Disclaimer Message Settings
+    $MESSAGE_FONT_COLOR: rgba($BLACK, 75%); // Message for validation's color
+    $MESSAGE_ALIGNMENT: left; // Message for validation's alignment [left, right, center, justify]
+    $MESSAGE_FONT_SIZE: 16px; // Message for validation's font size
+
+    // Form Checkbox Settings
+    $CHECKBOX_ACCENT_COLOR: $COLOR_PRIMARY; // Checkbox's color when checked
+
+    // Form
+    background-color: $FORM_BODY_BACKGROUND_COLOR;
+    padding: $FORM_BODY_PADDING;
+    border-radius: $FORM_BODY_RADIUS;
+    // box-shadow: $FORM_BODY_SHADOW;
+    // border: $FORM_BODY_BORDER;
+    width: 100%;
+    .label-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.25rem;
+    }
+    label {
+        margin-bottom: 1rem;
+        font-size: 18px;
+        &.req {
+            &::after {
+                content: "*";
+                color: $COLOR_ERROR;
+            }
+        }
+    }
+    .star {
+        color: $COLOR_ERROR;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+    }
+    &__control {
+        display: block;
+        width: 100%;
+        padding: $INPUT_PADDING;
+        font-size: $INPUT_FONT_SIZE;
+        font-weight: $INPUT_FONT_WEIGHT;
+        line-height: $INPUT_FONT_LINE_HEIGHT;
+        color: $INPUT_FONT_COLOR;
+        background-color: $WHITE;
+        // background-color: transparent;
+        background-clip: padding-box;
+        border: $INPUT_BORDER;
+        border-radius: $INPUT_RADIUS;
+        box-shadow: $INPUT_BOX_SHADOW;
+        transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        @include input-placeholder {
+            color: $INPUT_PLACEHOLDER_COLOR;
+        }
+        &.error {
+            border-color: $INPUT_ERROR_COLOR;
+            @include input-placeholder {
+                color: $INPUT_ERROR_COLOR;
+            }
+        }
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            border-color: $INPUT_FOCUS_BORDER_COLOR;
+        }
+    }
+    &__textarea {
+        resize: none;
+    }
+    .message {
+        text-align: $MESSAGE_ALIGNMENT;
+        font-size: $MESSAGE_FONT_SIZE;
+        margin-top: 1rem;
+        color: $MESSAGE_FONT_COLOR;
+        display: none;
+        &.active {
+            display: relative;
+        }
+    }
+    .disclaimer {
+        text-align: $DISCLAIMER_ALIGNMENT;
+        font-size: $DISCLAIMER_FONT_SIZE;
+        margin-top: 1rem;
+        color: rgba($DISCLAIMER_FONT_COLOR, 50%);
+        display: flex;
+    }
+    input[type="checkbox"] {
+        accent-color: $CHECKBOX_ACCENT_COLOR;
+        margin-right: 1rem;
+    }
+    .form__checkbox {
+        &.primary {
+            label {
+                color: $COLOR_PRIMARY;
+            }
+        }
+    }
+    .noRadius {
+        border-radius: 0px;
+    }
+    .button__primary {
+        //added as a specific selector, unique change
+        border-radius: 20px;
+    }
+}

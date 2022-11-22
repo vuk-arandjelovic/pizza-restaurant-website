@@ -1,0 +1,32 @@
+.container,
+.container-fluid,
+%container-fluid {
+    @include make-container;
+}
+
+// Responsive containers that are 100% wide until a breakpoint
+@each $breakpoint, $container-max-width in $CONTAINER_MAX_WIDTHS {
+    .container-#{$breakpoint} {
+        @extend %container-fluid;
+    }
+    @include media-breakpoint-up($breakpoint, $GRID_BREAKPOINTS) {
+        %responsive-container-#{$breakpoint} {
+            max-width: $container-max-width;
+        }
+
+        // Extend each breakpoint which is smaller or equal to the current breakpoint
+        $EXTEND_BREAKPOINT: true;
+        @each $name, $width in $GRID_BREAKPOINTS {
+            @if $EXTEND_BREAKPOINT {
+                .container#{breakpoint-infix($name, $GRID_BREAKPOINTS)} {
+                    @extend %responsive-container-#{$breakpoint};
+                }
+
+                // Once the current breakpoint is reached, stop extending
+                @if $breakpoint == $name {
+                    $EXTEND_BREAKPOINT: false;
+                }
+            }
+        }
+    }
+}

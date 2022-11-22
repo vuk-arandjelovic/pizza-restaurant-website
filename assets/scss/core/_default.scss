@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: $FONT_PRIMARY;
+    accent-color: $COLOR_PRIMARY;
+}
+section * {
+    z-index: 2;
+}
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: $COLOR_PRIMARY;
+    &:hover {
+        color: inherit;
+    }
+}
+body {
+    background-color: $BODY_BG;
+    color: $BODY_TEXT;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
+}
+.bg {
+    &__black {
+        color: $WHITE;
+        background-color: $BG_BLACK;
+    }
+    &__gray {
+        background-color: $BG_DARK;
+    }
+}
+.scroll-disabled {
+    overflow: hidden;
+}
+%bounce {
+    @include inline-animation(3s) {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(20px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+}

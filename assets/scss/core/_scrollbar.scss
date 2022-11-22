@@ -1,0 +1,26 @@
+// $SCROLLBAR_WIDTH: 10px;
+// $SCROLLBAR_THUMB_COLOR: $COLOR_PRIMARY;
+// $SCROLLBAR_THUMB_HOVER_COLOR: $COLOR_SECONDARY;
+// $SCROLLBAR_BACKGROUND_COLOR: color.adjust($WHITE, $alpha: .01);
+
+// // Width
+// ::-webkit-scrollbar {
+//     width: $SCROLLBAR_WIDTH;
+// }
+
+// // Track
+// ::-webkit-scrollbar-track {
+//     background: $SCROLLBAR_BACKGROUND_COLOR;
+// }
+
+// // Handle
+// ::-webkit-scrollbar-thumb {
+//     background: $SCROLLBAR_THUMB_COLOR;
+//     border-radius: math.div($SCROLLBAR_WIDTH, 2);
+//     border: math.div($SCROLLBAR_WIDTH, 4) solid $SCROLLBAR_BACKGROUND_COLOR;
+// }
+
+// // Handle on hover
+// ::-webkit-scrollbar-thumb:hover {
+//     background: $SCROLLBAR_THUMB_HOVER_COLOR;
+// }

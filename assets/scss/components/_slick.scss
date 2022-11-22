@@ -1,0 +1,248 @@
+.slick {
+    // Slick Arrows General Settins
+    $SLICK_ARROWS_OPACITY: 0.75;
+    $SLICK_ARROWS_OFFSET: 1rem;
+    $SLICK_ARROWS_POSITION: -1; // Are arrows inside or outside [1 - inside, -1 - outside]
+    $SLICK_ARROW_WIDTH: 1.5rem;
+    $SLICK_ARROW_HEIGHT: 1.5rem;
+    $SLICK_ARROW_COLOR: "ffffff";
+    $SLICK_ARROW_SHADOW: 0 0 6px rgba(#000, 50%);
+
+    // Slick Arrows Hover Settings
+    $SLICK_HOVER_ARROW_COLOR: "E2EBF0";
+    $SLICK_HOVER_ARROWS_COLOR: $COLOR_PRIMARY;
+
+    // Slick
+    &-prev,
+    &-next {
+        width: $SLICK_ARROW_WIDTH;
+        height: $SLICK_ARROW_HEIGHT;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            transition: color 0.15s, opacity 0.15s;
+            opacity: $SLICK_ARROWS_OPACITY;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            filter: drop-shadow($SLICK_ARROW_SHADOW);
+        }
+    }
+    &-prev {
+        z-index: 10;
+        left: $SLICK_ARROWS_OFFSET * $SLICK_ARROWS_POSITION;
+        &::before {
+            /* stylelint-disable max-line-length */
+            background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-left' class='svg-inline--fa fa-chevron-left fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23#{$SLICK_ARROW_COLOR}' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'%3E%3C/path%3E%3C/svg%3E");
+            /* stylelint-enable max-line-length */
+        }
+        &:hover {
+            &::before {
+                /* stylelint-disable max-line-length */
+                background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-left' class='svg-inline--fa fa-chevron-left fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23#{$SLICK_HOVER_ARROW_COLOR}' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'%3E%3C/path%3E%3C/svg%3E");
+                /* stylelint-enable max-line-length */
+            }
+        }
+    }
+    &-next {
+        right: $SLICK_ARROWS_OFFSET * $SLICK_ARROWS_POSITION;
+        &::before {
+            /* stylelint-disable max-line-length */
+            background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-right' class='svg-inline--fa fa-chevron-right fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23#{$SLICK_ARROW_COLOR}' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'%3E%3C/path%3E%3C/svg%3E");
+            /* stylelint-enable max-line-length */
+        }
+        &:hover {
+            &::before {
+                /* stylelint-disable max-line-length */
+                background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-right' class='svg-inline--fa fa-chevron-right fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23#{$SLICK_HOVER_ARROW_COLOR}' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'%3E%3C/path%3E%3C/svg%3E");
+                /* stylelint-enable max-line-length */
+            }
+        }
+    }
+}
+.slick__dots {
+    // Slick Dots General SEttings
+    $DOTS_SIZE: 10px;
+    $DOTS_OFFSET: 2rem;
+    $DOTS_SPACE: 1rem;
+    $DOTS_POSITION: -1; // Are dots inside or outside [1 - inside, -1 - outside]
+    $DOTS_BORDER_RADIUS: 0;
+    $DOTS_BORDER: none;
+    $DOTS_BOX_SHADOW: none;
+    $DOT_SHADOW: 0 0 6px rgba(#000, 50%);
+
+    // Slick Icon Settings
+    $DOTS_ICON_COLOR: "ffffff";
+    /* stylelint-disable max-line-length */
+    $DOTS_ICON: "data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='circle' class='svg-inline--fa fa-circle fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23#{$DOTS_ICON_COLOR}' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z'%3E%3C/path%3E%3C/svg%3E";
+    /* stylelint-enable max-line-length */
+
+    // Slick Hover Icon Settings
+    $DOT_HOVER_ICON_COLOR: "E2EBF0";
+    /* stylelint-disable max-line-length */
+    $DOT_HOVER_ICON: "data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='circle' class='svg-inline--fa fa-circle fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23#{$DOT_HOVER_ICON_COLOR}' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z'%3E%3C/path%3E%3C/svg%3E";
+    /* stylelint-enable max-line-length */
+
+    // Slick Active Icon Settings
+    $DOT_ACTIVE_ICON_COLOR: "E2EBF0";
+    /* stylelint-disable max-line-length */
+    $DOT_ACTIVE_ICON: "data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='far' data-icon='circle' class='svg-inline--fa fa-circle fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23#{$DOT_ACTIVE_ICON_COLOR}' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z'%3E%3C/path%3E%3C/svg%3E";
+    /* stylelint-enable max-line-length */
+
+    // Slick Dots
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: $DOTS_OFFSET * $DOTS_POSITION;
+    li {
+        margin-right: $DOTS_SPACE;
+        &:last-of-type {
+            margin-right: 0;
+        }
+        button {
+            position: relative;
+            width: $DOTS_SIZE;
+            height: $DOTS_SIZE;
+            color: transparent;
+            background-color: transparent;
+            border: $DOTS_BORDER;
+            border-radius: $DOTS_BORDER_RADIUS;
+            box-shadow: $DOTS_BOX_SHADOW;
+            &:focus,
+            &:active {
+                outline: none;
+            }
+            &::before {
+                @include pseudo;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                filter: drop-shadow($DOT_SHADOW);
+                background-image: url($DOTS_ICON);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                transition: background-image 0.15s;
+            }
+        }
+        &.slick-active {
+            button {
+                &::before {
+                    background-image: url($DOT_ACTIVE_ICON);
+                    filter: drop-shadow($DOT_SHADOW);
+                }
+            }
+        }
+        &:not(.slick-active):hover {
+            button {
+                &::before {
+                    background-image: url($DOT_HOVER_ICON);
+                }
+            }
+        }
+    }
+}
+.slick__arrows {
+    // Slick Arrows General Settings
+    $ARROW_OFFSET: 1rem;
+    $ARROW_TRANSITION: background-color 0.15s, color 0.15s, box-shadow 0.15s,
+        border-color 0.15s;
+    $ARROW_SIZE: 3rem;
+    $ARROW_FONT_SIZE: 1rem;
+    $ARROW_FONT_COLOR: $BLACK;
+    $ARROW_CHEVRON_COLOR: "000000";
+    $ARROW_BACKGROUND_COLOR: $WHITE;
+    $ARROW_BORDER: 1px solid rgba($COLOR_PRIMARY, 30%);
+    $ARROW_BORDER_RADIUS: math.div($RADIUS_BASE, 2);
+    $ARROW_SHADOW: 0 4px 10px -5px rgba($COLOR_PRIMARY, 80%);
+
+    // Slick Arrows Hover Settings
+    $ARROW_HOVER_BACKGROUND: $COLOR_PRIMARY;
+    $ARROW_HOVER_FONT_COLOR: $WHITE;
+    $ARROW_HOVER_SHADOW: 0 4px 10px -5px rgba($COLOR_PRIMARY, 80%);
+    $ARROW_HOVER_CHEVRON_COLOR: "ffffff";
+
+    // Slick Arrows
+    display: flex;
+    align-items: center;
+    div:first-of-type {
+        margin-right: $ARROW_OFFSET;
+    }
+    .arrow {
+        &__prev,
+        &__next {
+            width: $ARROW_SIZE;
+            height: $ARROW_SIZE;
+            font-size: $ARROW_FONT_SIZE;
+            line-height: $ARROW_FONT_SIZE;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $ARROW_BACKGROUND_COLOR;
+            color: $ARROW_FONT_COLOR;
+            cursor: pointer;
+            border: $ARROW_BORDER;
+            border-radius: $ARROW_BORDER_RADIUS;
+            box-shadow: $ARROW_SHADOW;
+            transition: $ARROW_TRANSITION;
+            &:hover {
+                background-color: $ARROW_HOVER_BACKGROUND;
+                color: $ARROW_HOVER_FONT_COLOR;
+                box-shadow: $ARROW_HOVER_SHADOW;
+            }
+        }
+        &__prev:not(.no-icon),
+        &__next:not(.no-icon) {
+            position: relative;
+            &::before {
+                @include pseudo;
+                @include absolute-center;
+                width: $ARROW_FONT_SIZE;
+                height: $ARROW_FONT_SIZE;
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+        &__prev:not(.no-icon) {
+            &::before {
+                /* stylelint-disable max-line-length */
+                background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-left' class='svg-inline--fa fa-chevron-left fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23#{$ARROW_CHEVRON_COLOR}' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'%3E%3C/path%3E%3C/svg%3E");
+                /* stylelint-enable max-line-length */
+            }
+            &:hover {
+                &::before {
+                    /* stylelint-disable max-line-length */
+                    background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-left' class='svg-inline--fa fa-chevron-left fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23#{$ARROW_HOVER_CHEVRON_COLOR}' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'%3E%3C/path%3E%3C/svg%3E");
+                    /* stylelint-enable max-line-length */
+                }
+            }
+        }
+        &__next:not(.no-icon) {
+            &::before {
+                /* stylelint-disable max-line-length */
+                background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-right' class='svg-inline--fa fa-chevron-right fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23#{$ARROW_CHEVRON_COLOR}' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'%3E%3C/path%3E%3C/svg%3E");
+                /* stylelint-enable max-line-length */
+            }
+            &:hover {
+                &::before {
+                    /* stylelint-disable max-line-length */
+                    background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-right' class='svg-inline--fa fa-chevron-right fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23#{$ARROW_HOVER_CHEVRON_COLOR}' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'%3E%3C/path%3E%3C/svg%3E");
+                    /* stylelint-enable max-line-length */
+                }
+            }
+        }
+    }
+}

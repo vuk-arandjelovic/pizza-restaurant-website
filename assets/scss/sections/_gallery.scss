@@ -1,0 +1,38 @@
+.gallery {
+    background-color: $WHITE;
+    background-repeat: no-repeat;
+    background-image: url("../images/bg-pictures/bg-img-1.png"),
+        url("../images/bg-pictures/bg-img-2.png"),
+        url("../images/bg-pictures/bg-img-3.png"),
+        url("../images/bg-pictures/bg-img-4.png"),
+        url("../images/bg-pictures/bg-img-5.png"),
+        url("../images/bg-pictures/bg-img-6.png");
+    background-size: 150px, 130px, 130px, 100px, 150px, 130px;
+    background-position: 70% 80%, bottom left, top left, 95% 10%, 35% 10%,
+        bottom right;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &::before {
+        @include pseudo;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: $WHITE;
+        opacity: 0.7;
+    }
+    &__item {
+        aspect-ratio: 1.5 / 1;
+        img {
+            object-fit: cover;
+            border-radius: 15px;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+// Inverts color by amount
+@function invert($COLOR, $AMOUNT: 100%) {
+    $INVERSE: color.change($COLOR, $hue: color.hue($COLOR) + 180);
+    @return mix($INVERSE, $COLOR, $AMOUNT);
+}
+
+// Sums array of numbers
+@function sum($NUMBERS...) {
+    $SUM: 0;
+    @each $NUMBER in $NUMBERS {
+        $SUM: $SUM + $NUMBER;
+    }
+    @return $SUM;
+}
+
+// Generates random color
+@function random-color() {
+    $RANDOM_COLOR: rgb(math.random(255), math.random(255), math.random(255));
+    @return $RANDOM_COLOR;
+}
+
+// Returns map with negative values that start with `n-`
+@function negativify-map($map) {
+    $result: ();
+    @each $key, $value in $map {
+        @if $key != 0 {
+            $result: map-merge($result, ("n" + $key: (-$value)));
+        }
+    }
+    @return $result;
+}
+
+@function map-loop($map, $func, $args...) {
+    $_map: ();
+  
+    @each $key, $value in $map {
+      // allow to pass the $key and $value of the map as an function argument
+      $_args: ();
+      @each $arg in $args {
+        $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+      }
+  
+      $_map: map-merge($_map, ($key: call(get-function($func), $_args...)));
+    }
+  
+    @return $_map;
+}

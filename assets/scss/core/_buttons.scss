@@ -1,0 +1,180 @@
+.btn {
+    // Button General Settings
+    $BUTTON_BORDER_RADIUS: $RADIUS_BASE;
+    $BUTTON_FONT_SIZE: 20px;
+    $BUTTON_PADDING: .75rem 1.25rem;
+    $BUTTON_FONT_WEIGHT: 400;
+
+    // Button Maps
+    $BUTTON_SIZES: (
+        "xs": 12px 20px,
+        "sm": 12px 30px,
+        "md": 12px 40px,
+        "lg": 12px 50px,
+        "xl": 12px 70px,
+    );
+    $BUTTON_FONT_SIZES: (
+        "xs": 12px,
+        "sm": 14px,
+        "md": 16px,
+        "lg": 20px,
+        "xl": 24px,
+    );
+
+    // Button
+    @mixin border($size: 2px, $color: $COLOR_PRIMARY) {
+        border: $size solid $color;
+    }
+    position: relative;
+    border-radius: $BUTTON_BORDER_RADIUS;
+    padding: $BUTTON_PADDING;
+    font-weight: $BUTTON_FONT_WEIGHT;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    @each $name, $size in $BUTTON_SIZES {
+        &.size__#{$name} {
+            padding: $size;
+        }
+    }
+    @each $name, $size in $BUTTON_FONT_SIZES {
+        &.font__#{$name} {
+            padding: $size;
+        }
+    }
+    .notification {
+        top: math.div($BUTTON_BORDER_RADIUS, 4) !important;
+        right: math.div($BUTTON_BORDER_RADIUS, 4) !important;
+        transform: translate(50%, -50%);
+    }
+    &.pill {
+        border-radius: $BUTTON_BORDER_RADIUS * 2;
+    }
+    /* stylelint-disable */
+    &.fullWidth {
+        width: 100%;
+    }
+    /* stylelint-enable */
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    &.dropdown-toggle {
+        padding-right: 3rem;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            right: .75rem;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            margin-left: 0;
+            vertical-align: none;
+            border: none;
+            width: 16px;
+            height: 16px;
+            transition: transform .15s;
+            background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' data-prefix='fas' data-icon='chevron-down' class='svg-inline--fa fa-chevron-down fa-w-14' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%23ffffff' d='M207.029 381.476 12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        &:hover {
+            &::after {
+                background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' data-prefix='fas' data-icon='chevron-down' class='svg-inline--fa fa-chevron-down fa-w-14' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%231190FC' d='M207.029 381.476 12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'/%3E%3C/svg%3E");
+            }
+        }
+    }
+
+    // ############
+    // ## COLORS ##
+    // ############
+    /* stylelint-disable no-descending-specificity */
+    &.button {
+        &__primary {
+            @include border;
+            color: $WHITE;
+            background-color: $COLOR_PRIMARY;
+            .loader {
+                border-color: rgba($WHITE, 20%);
+                border-top-color: $BODY_BG;
+            }
+            &.show {
+                &::after {
+                    background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' data-prefix='fas' data-icon='chevron-down' class='svg-inline--fa fa-chevron-down fa-w-14' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%231190FC' d='M207.029 381.476 12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'/%3E%3C/svg%3E");
+                    transform: translate(-50%, -50%) rotate(-180deg);
+                }
+            }
+            &:hover,
+            &.show {
+                background-color: transparent;
+                color: $COLOR_PRIMARY;
+                .loader {
+                    border-color: rgba($COLOR_PRIMARY, 20%);
+                    border-top-color: $COLOR_PRIMARY;
+                }
+            }
+        }
+        &__primary--inverted {
+            @include border;
+            color: $COLOR_PRIMARY;
+            background-color: transparent;
+            .loader {
+                border-top-color: $COLOR_PRIMARY;
+            }
+            &:hover {
+                background-color: $COLOR_PRIMARY;
+                color: $WHITE;
+                .loader {
+                    border-top-color: $WHITE;
+                }
+            }
+        }
+        &__secondary {
+            color: $WHITE;
+            @include border(2px, $COLOR_SECONDARY);
+            background-color: $COLOR_SECONDARY;
+            .loader {
+                border-top-color: $WHITE;
+            }
+            &.show {
+                &::after {
+                    background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' data-prefix='fas' data-icon='chevron-down' class='svg-inline--fa fa-chevron-down fa-w-14' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%238452EA' d='M207.029 381.476 12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'/%3E%3C/svg%3E");
+                    transform: translate(-50%, -50%) rotate(-180deg);
+                }
+            }
+            &::after {
+                background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' data-prefix='fas' data-icon='chevron-down' class='svg-inline--fa fa-chevron-down fa-w-14' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%23ffffff' d='M207.029 381.476 12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'/%3E%3C/svg%3E");
+            }
+            &:hover,
+            &.show {
+                color: $COLOR_SECONDARY;
+                background-color: transparent;
+                .loader {
+                    border-color: rgba($COLOR_SECONDARY, 20%);
+                    border-top-color: $COLOR_SECONDARY;
+                }
+                &::after {
+                    background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' data-prefix='fas' data-icon='chevron-down' class='svg-inline--fa fa-chevron-down fa-w-14' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%238452EA' d='M207.029 381.476 12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'/%3E%3C/svg%3E");
+                }
+            }
+        }
+        &__secondary--inverted {
+            color: $COLOR_SECONDARY;
+            @include border(2px, $COLOR_SECONDARY);
+            background-color: transparent;
+            .loader {
+                border-top-color: $COLOR_SECONDARY;
+            }
+            &:hover {
+                color: $WHITE;
+                background-color: $COLOR_SECONDARY;
+                .loader {
+                    border-top-color: $WHITE;
+                }
+            }
+        }
+    }
+    /* stylelint-enable no-descending-specificity */
+}

@@ -1,0 +1,188 @@
+/* stylelint-disable no-descending-specificity */
+.speed-dial {
+    // Speed Dial General Settings
+    $BUTTON_OFFSET: 1rem;
+    $MENU_OFFSET: 1rem;
+
+    // Speed Dial
+    position: fixed;
+    bottom: $BUTTON_OFFSET;
+    right: $BUTTON_OFFSET;
+    display: inline-flex;
+    z-index: 50;
+    &.position {
+        &__top-right {
+            bottom: unset;
+            top: $BUTTON_OFFSET;
+            left: unset;
+            right: $BUTTON_OFFSET;
+        }
+        &__top-left {
+            bottom: unset;
+            top: $BUTTON_OFFSET;
+            left: $BUTTON_OFFSET;
+            right: unset;
+        }
+        &__bottom-right {
+            bottom: $BUTTON_OFFSET;
+            top: unset;
+            left: unset;
+            right: $BUTTON_OFFSET;
+        }
+        &__bottom-left {
+            bottom: $BUTTON_OFFSET;
+            top: unset;
+            left: $BUTTON_OFFSET;
+            right: unset;
+        }
+    }
+    input[type="checkbox"]:checked ~ .dial__options {
+        display: flex;
+    }
+    .dial {
+        &__button {
+            $BUTTON_SIZE: 4rem;
+            $BUTTON_COLOR: $COLOR_PRIMARY;
+            $BUTTON_BORDER_RADIUS: 50%;
+            $BUTTON_FONT_COLOR: $WHITE;
+            $BUTTON_FONT_SIZE: 1.5rem;
+            position: relative;
+            width: $BUTTON_SIZE;
+            height: $BUTTON_SIZE;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $BUTTON_COLOR;
+            border-radius: $BUTTON_BORDER_RADIUS;
+            color: $BUTTON_FONT_COLOR;
+            > i {
+                font-size: $BUTTON_FONT_SIZE;
+            }
+            input[type="checkbox"] {
+                cursor: pointer;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 10;
+            }
+            i {
+                transition: transform .15s;
+            }
+            input[type="checkbox"]:checked + i {
+                transform: rotate(45deg);
+            }
+        }
+        &__options {
+            // Options Button Settings
+            $BUTTON_SIZE: 3rem;
+            $BUTTON_FONT_COLOR: $WHITE;
+            $BUTTON_FONT_SIZE: 1rem;
+            $BUTTON_BACKGROUND_COLOR: $COLOR_SECONDARY;
+            $BUTTON_BORDER: none;
+            $BUTTON_BORDER_RADIUS: 50%;
+
+            // Options Button
+            position: absolute;
+            top: $MENU_OFFSET * -1;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none;
+            flex-direction: column-reverse;
+            align-items: center;
+            li {
+                width: $BUTTON_SIZE;
+                height: $BUTTON_SIZE;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $BUTTON_FONT_COLOR;
+                background-color: $BUTTON_BACKGROUND_COLOR;
+                text-decoration: none;
+                border: $BUTTON_BORDER;
+                border-radius: $BUTTON_BORDER_RADIUS;
+                cursor: pointer;
+                margin: .5rem 0;
+                font-size: $BUTTON_FONT_SIZE;
+                opacity: 0;
+                transform: scale(0);
+                transition: opacity .5s, transform .5s;
+                animation: .5s appear-button forwards;
+            }
+        }
+    }
+    @for $i from 1 through 10 {
+        span:nth-of-type(#{$i}) li {
+            // Delay the animation. Delay increases as items loop.
+            animation-delay: .15s * $i;
+        }
+        li:nth-of-type(#{$i}) {
+            // Delay the animation. Delay increases as items loop.
+            animation-delay: .15s * $i;
+        }
+    }
+    &.direction {
+        &__left {
+            .dial__options {
+                bottom: unset;
+                top: 50%;
+                left: $MENU_OFFSET * -1;
+                right: unset;
+                transform: translate(-100%, -50%);
+                flex-direction: row-reverse;
+                li {
+                    margin: 0 .5rem;
+                }
+            }
+        }
+        &__right {
+            .dial__options {
+                bottom: unset;
+                top: 50%;
+                left: unset;
+                right: $MENU_OFFSET * -1;
+                transform: translate(100%, -50%);
+                flex-direction: row;
+                li {
+                    margin: 0 .5rem;
+                }
+            }
+        }
+        &__top {
+            .dial__options {
+                bottom: unset;
+                top: $MENU_OFFSET * -1;
+                left: 50%;
+                right: unset;
+                transform: translate(-50%, -100%);
+                flex-direction: column-reverse;
+            }
+        }
+        &__bottom {
+            .dial__options {
+                bottom: $MENU_OFFSET * -1;
+                top: unset;
+                left: 50%;
+                right: unset;
+                transform: translate(-50%, 100%);
+                flex-direction: column;
+            }
+        }
+    }
+}
+@keyframes appear-button {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* stylelint-enable no-descending-specificity */

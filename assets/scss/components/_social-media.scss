@@ -1,0 +1,87 @@
+ul.social-media {
+    // Social Media General Settings
+    $SOCIAL_ICON_OFFSET: 1rem;
+    $SOCIAL_ICON_COLOR: $COLOR_PRIMARY;
+    $SOCIAL_ICON_FONT_WEIGHT: $COLOR_PRIMARY;
+    $SOCIAL_ICON_SIZE: 2.5rem;
+    $SOCIAL_ICON_FONT_SIZE: 1.5rem;
+    $SOCIAL_ICON_BORDER: 2px solid $COLOR_PRIMARY;
+    // $SOCIAL_ICON_BACKGROUND_COLOR: rgba($COLOR_PRIMARY, 30%);
+    $SOCIAL_ICON_BACKGROUND_COLOR: TRANSPARENT;
+    $SOCIAL_ICON_TRANSITIONS: color 0.15s, background-color 0.15s,
+        border-radius 0.15s, box-shadow 0.15s, border 0.15s;
+    // $SOCIAL_ICON_SHADOW: 0 0 10px -5px rgba($COLOR_PRIMARY, 80%);
+    $SOCIAL_ICON_BORDER_RADIUS: math.div($RADIUS_BASE, 3);
+
+    // Social Media Hover Settings
+    $SOCIAL_ICON_HOVER_COLOR: $WHITE;
+    $SOCIAL_ICON_HOVER_BORDER: none;
+    $SOCIAL_ICON_HOVER_BACKGROUND_COLOR: $COLOR_PRIMARY;
+    $SOCIAL_ICON_HOVER_BORDER_RADIUS: math.div($RADIUS_BASE, 3);
+    // $SOCIAL_ICON_HOVER_SHADOW: 0 4px 10px -5px rgba($COLOR_PRIMARY, 80%);
+
+    // Social Media
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    &.justify {
+        &__end {
+            justify-content: flex-end;
+        }
+        &__start {
+            justify-content: flex-start;
+        }
+        &__center {
+            justify-content: center;
+        }
+        &__between {
+            justify-content: space-between;
+        }
+        &__around {
+            justify-content: space-around;
+        }
+    }
+    li {
+        margin-right: $SOCIAL_ICON_OFFSET;
+        &:last-of-type {
+            margin-right: 0;
+        }
+        a {
+            color: $SOCIAL_ICON_COLOR;
+            font-weight: $SOCIAL_ICON_FONT_WEIGHT;
+            width: $SOCIAL_ICON_SIZE;
+            height: $SOCIAL_ICON_SIZE;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: $SOCIAL_ICON_FONT_SIZE;
+            background-color: $SOCIAL_ICON_BACKGROUND_COLOR;
+            border-radius: $SOCIAL_ICON_BORDER_RADIUS;
+            // box-shadow: $SOCIAL_ICON_SHADOW;
+            border: $SOCIAL_ICON_BORDER;
+            transition: $SOCIAL_ICON_TRANSITIONS;
+            &:hover {
+                color: $SOCIAL_ICON_HOVER_COLOR;
+                background-color: $SOCIAL_ICON_HOVER_BACKGROUND_COLOR;
+                border: $SOCIAL_ICON_HOVER_BORDER;
+                border-radius: $SOCIAL_ICON_HOVER_BORDER_RADIUS;
+                // box-shadow: $SOCIAL_ICON_HOVER_SHADOW;
+            }
+        }
+    }
+    &.direction {
+        &__column {
+            flex-direction: column;
+            li {
+                margin-right: unset;
+                margin-bottom: $SOCIAL_ICON_OFFSET;
+                &:last-of-type {
+                    margin-right: unset;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

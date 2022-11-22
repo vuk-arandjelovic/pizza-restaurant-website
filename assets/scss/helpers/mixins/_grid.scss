@@ -1,0 +1,128 @@
+@mixin make-row($gutter: $GRID_GUTTER_WIDTH) {
+    /* stylelint-disable */
+    --#{$VARIABLE_PREFIX}gutter-x: #{$gutter};
+    --#{$VARIABLE_PREFIX}gutter-y: 0;
+    /* stylelint-enable */
+    display: flex;
+    flex-wrap: wrap;
+
+    // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
+    margin-top: calc(-1 * var(--#{$VARIABLE_PREFIX}gutter-y)); // stylelint-disable-line function-disallowed-list
+    margin-right: calc(-.5 * var(--#{$VARIABLE_PREFIX}gutter-x)); // stylelint-disable-line function-disallowed-list
+    margin-left: calc(-.5 * var(--#{$VARIABLE_PREFIX}gutter-x)); // stylelint-disable-line function-disallowed-list
+}
+@mixin make-col-ready($gutter: $GRID_GUTTER_WIDTH) {
+    // Add box sizing if only the grid is loaded
+    /* stylelint-disable  value-keyword-case */
+    box-sizing: if(meta.variable-exists(INCLUDE_COLUMN_BOX_SIZING) and $INCLUDE_COLUMN_BOX_SIZING, border-box, null);
+    /* stylelint-enable */
+    // Prevent columns from becoming too narrow when at smaller grid tiers by
+    // always setting `width: 100%;`. This works because we set the width
+    // later on to override this initial width.
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
+    padding-right: calc(var(--#{$VARIABLE_PREFIX}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
+    padding-left: calc(var(--#{$VARIABLE_PREFIX}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
+    margin-top: var(--#{$VARIABLE_PREFIX}gutter-y);
+}
+@mixin make-col($size: false, $columns: $grid-columns) {
+    @if $size {
+        flex: 0 0 auto;
+        width: math.percentage(math.div($size, $columns));
+    } @else {
+        flex: 1 1 0;
+        max-width: 100%;
+    }
+}
+@mixin row-cols($count) {
+    > * {
+        flex: 0 0 auto;
+        width: math.div(100%, $count);
+    }
+}
+@mixin make-col-auto() {
+    flex: 0 0 auto;
+    width: auto;
+}
+@mixin make-col-offset($size, $columns: $GRID_COLUMNS) {
+    $NUM: math.div($size, $columns);
+    margin-left: if($NUM == 0, 0, math.percentage($NUM));
+}
+@mixin make-grid-columns($columns: $GRID_COLUMNS, $gutter: $GRID_GUTTER_WIDTH, $breakpoints: $GRID_BREAKPOINTS) {
+    @each $breakpoint in map.keys($breakpoints) {
+        $INFIX: breakpoint-infix($breakpoint, $breakpoints);
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            .col#{$INFIX} {
+                flex: 1 0 0%;
+            }
+            .row-cols#{$INFIX}-auto > * {
+                @include make-col-auto;
+            }
+            @if $GRID_ROW_COLUMNS > 0 {
+                @for $i from 1 through $GRID_ROW_COLUMNS {
+                    .row-cols#{$INFIX}-#{$i} {
+                        @include row-cols($i);
+                    }
+                }
+            }
+            .col#{$INFIX}-auto {
+                @include make-col-auto;
+            }
+            @if $columns > 0 {
+                @for $i from 1 through $columns {
+                    .col#{$INFIX}-#{$i} {
+                        @include make-col($i, $columns);
+                    }
+                }
+
+                // `$columns - 1` because offsetting by the width of an entire row isn't possible
+                @for $i from 0 through ($columns - 1) {
+                    @if not ($INFIX == "" and $i == 0) {
+                        .offset#{$INFIX}-#{$i} {
+                            @include make-col-offset($i, $columns);
+                        }
+                    }
+                }
+            }
+
+            // Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
+            @each $key, $value in $GUTTERS {
+                .g#{$INFIX}-#{$key},
+                .gx#{$INFIX}-#{$key} {
+                    /* stylelint-disable custom-property-pattern */
+                    --#{$VARIABLE_PREFIX}gutter-x: #{$value};
+                    /* stylelint-enable */
+                }
+                .g#{$INFIX}-#{$key},
+                .gy#{$INFIX}-#{$key} {
+                    /* stylelint-disable custom-property-pattern */
+                    --#{$VARIABLE_PREFIX}gutter-y: #{$value};
+                    /* stylelint-enable */
+                }
+            }
+        }
+    }
+}
+@mixin make-cssgrid($columns: $GRID_COLUMNS, $breakpoints: $GRID_BREAKPOINTS) {
+    @each $breakpoint in map-keys($breakpoints) {
+        $INFIX: breakpoint-infix($breakpoint, $breakpoints);
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            @if $columns > 0 {
+                @for $i from 1 through $columns {
+                    .g-col#{$INFIX}-#{$i} {
+                        grid-column: auto / span $i;
+                    }
+                }
+
+                // Start with `1` because `0` is and invalid value.
+                // Ends with `$columns - 1` because offsetting by the width of an entire row isn't possible.
+                @for $i from 1 through ($columns - 1) {
+                    .g-start#{$INFIX}-#{$i} {
+                        grid-column-start: $i;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+// Generates random background color
+@mixin random-background() {
+    background-color: random-color();
+}
+
+// Generates random background color and inverted font color
+@mixin random-bg-and-color() {
+    background-color: random-color();
+    color: invert(random-color());
+}
+
+// Primary text gradient
+@mixin text-gradient {
+    display: inline-flex;
+    color: $COLOR_PRIMARY;
+    background: $COLOR_GRADIENT_PRIMARY;
+    background-clip: text;
+    /* stylelint-disable */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* stylelint-enable */
+}
+
+// Holographic background color
+@mixin holographic {
+    background-image: $COLOR_GRADIENT_HOLOGRAPHIC;
+    background-blend-mode: overlay;
+}

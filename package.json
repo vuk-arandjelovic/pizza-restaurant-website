@@ -1,0 +1,28 @@
+{
+  "name": "db-saas-theme",
+  "version": "1.0.0",
+  "description": "Digital Bridges theme with many number of components",
+  "main": "index.html",
+  "repository": "git@github.com:Digital-Bridges/db-saas-theme.git",
+  "author": "Digital Bridges",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
+    "postcss-scss": "^4.0.2",
+    "scss": "^0.2.4",
+    "stylelint": "^14.1.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-scss": "^4.0.1"
+  },
+  "scripts": {
+    "compile": "sass --source-map --watch assets/scss:assets/css",
+    "minify": "css-minify -d assets/css -o assets/css",
+    "stylelint": "stylelint '**/*.scss'",
+    "test": "stylelint '**/*.scss'"
+    },
+  "devDependencies": {
+    "css-minify": "^2.0.0"
+  }
+}

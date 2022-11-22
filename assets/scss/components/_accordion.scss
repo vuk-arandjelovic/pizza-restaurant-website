@@ -1,0 +1,106 @@
+.accordion {
+    // Accordion  General
+    $ACCORDION_TITLE_COLOR: $COLOR_PRIMARY; // Accordion title color
+    $ACCORDION_OPEN_TITLE_COLOR: $COLOR_PRIMARY; // Accordion title color
+    $ACCORDION_BODY_BG: $WHITE; // Accordion body color
+    $ACCORDION_BODY_TEXT_COLOR: $BLACK; // Accodion body text color
+
+    // Chevron styles
+
+    $CHEVRON_COLOR: "1190FC"; // Chevron color
+    $CHEVRON_OPEN_COLOR: "1190FC"; // Chevron color when opened
+
+    // Accordion border
+    $ACCORDION_BORDER_RADIUS: $RADIUS_BASE; // Border radius
+    $ACCORDION_BORDER_COLOR: $COLOR_PRIMARY; // Border color
+    $ACCORDION_BORDER_THICKNESS: 2px; // Border thicknes
+
+    // Accordion
+    &-button {
+        color: $ACCORDION_TITLE_COLOR;
+        background-color: transparent !important;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-right: 4rem;
+        box-shadow: none !important;
+        /* stylelint-disable max-line-length */
+        transition: color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, border-radius .15s ease;
+        /* stylelint-enable max-line-length */
+        &.collapsed {
+            /* stylelint-disable max-line-length */
+            transition: color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, border-radius .15s ease, background-color .5s;
+            /* stylelint-enable max-line-length */
+        }
+        &:not(.collapsed) {
+            background-color: transparent;
+            color: $ACCORDION_OPEN_TITLE_COLOR;
+        }
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        &::after {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1rem;
+            height: 1rem;
+            background-size: contain;
+            transition: none !important;
+            /* stylelint-disable max-line-length */
+            background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' data-prefix='fas' data-icon='chevron-down' class='svg-inline--fa fa-chevron-down fa-w-14' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%23#{$CHEVRON_COLOR}' d='M207.029 381.476 12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'/%3E%3C/svg%3E");
+            /* stylelint-enable max-line-length */
+            background-position: center;
+        }
+        &:not(.collapsed)::after {
+            width: 1rem;
+            height: 1rem;
+            background-size: contain;
+            /* stylelint-disable max-line-length */
+            background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' data-prefix='fas' data-icon='chevron-down' class='svg-inline--fa fa-chevron-down fa-w-14' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%23#{$CHEVRON_OPEN_COLOR}' d='M207.029 381.476 12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'/%3E%3C/svg%3E");
+            /* stylelint-enable max-line-length */
+            transform: translateY(-50%) rotate(-180deg);
+        }
+        @media screen and (max-width: 576px) {
+            font-size: 13px;
+        }
+    }
+    &-item {
+        border-radius: 25px !important;
+        margin-bottom: 2rem;
+        overflow: hidden;
+        border: $ACCORDION_BORDER_THICKNESS solid $ACCORDION_BORDER_COLOR !important;
+        background-color: $ACCORDION_BODY_BG !important;
+        &:first-of-type .accordion-button,
+        &:first-of-type .accordion-collapse,
+        &:first-of-type .accordion-button.collapsed {
+            border-radius: 0 !important;
+        }
+        &:last-of-type .accordion-button,
+        &:last-of-type .accordion-collapse,
+        &:last-of-type .accordion-button.collapsed {
+            border-radius: 0 !important;
+        }
+        &.open {
+            border: $ACCORDION_BORDER_THICKNESS solid $ACCORDION_BORDER_COLOR;
+        }
+    }
+    &-body {
+        padding: 1rem 1.25rem;
+        background-color: transparent !important;
+        color: $ACCORDION_BODY_TEXT_COLOR;
+        text-align: left;
+        font-weight: 400;
+        @media screen and (max-width: 576px) {
+            text-align: center;
+            padding: 1rem;
+            font-size: 15px;
+            line-height: 20px;
+        }
+    }
+}

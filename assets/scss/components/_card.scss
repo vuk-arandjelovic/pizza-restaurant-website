@@ -1,0 +1,331 @@
+/* stylelint-disable no-descending-specificity */
+.brief-card {
+    // Brief Card General Settings
+    $BREIF_BACKGROUND_COLOR: $COLOR_PRIMARY_WHITE;
+    $BREIF_BORDER_RADIUS: $RADIUS_BASE;
+    $BREIF_BORDER: none;
+    $BREIF_PADDING: 3rem 1.5rem 1.5rem 1.5rem;
+    $BREIF_OFFSET_BOTTOM: 1.5rem;
+    $BRIEF_TRANSITION: background-color .15s, color .15s, transform .15s, background-color .25s, box-shadow .33s;
+    $BRIEF_TRANSFORM: none;
+    $BRIEF_SHADOW: 0 0 0 transparent;
+
+    // Brief Card Title Settings
+    $BRIEF_TITLE_FONT_SIZE: 1.25rem;
+    $BRIEF_TITLE_MARGIN_TOP: 1.5rem;
+    $BRIEF_TITLE_MARGIN_BOTTOM: 1rem;
+    $BRIEF_TITLE_TRANSITION: color .15s;
+
+    // Brief Card Hover Settings
+    $BRIEF_HOVER_BACKGROUND_COLOR: $COLOR_PRIMARY;
+    $BRIEF_HOVER_COLOR: $WHITE;
+    $BRIEF_HOVER_TRANSFORM: scale(1.03);
+    $BRIEF_HOVER_TITLE_COLOR: $WHITE;
+    $BRIEF_HOVER_SPAN_COLOR: $WHITE;
+    $BRIEF_HOVER_SHADOW: 0 4px 12px -2px rgba($BLACK, 30%);
+    $BRIEF_HOVER_ICON_PSEUDO_BACKGROUND_COLOR: rgba($WHITE, 30%);
+    $BRIEF_HOVER_ICON_COLOR: $COLOR_PRIMARY;
+    $BRIEF_HOVER_ICON_BACKGROUND_COLOR: $WHITE;
+
+    // Brief Card
+    position: relative;
+    background-color: $BREIF_BACKGROUND_COLOR;
+    border-radius: $BREIF_BORDER_RADIUS;
+    border: $BREIF_BORDER;
+    padding: $BREIF_PADDING;
+    margin-bottom: $BREIF_OFFSET_BOTTOM;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: $BRIEF_TRANSFORM;
+    box-shadow: $BRIEF_SHADOW;
+    height: 100%;
+    transition: $BRIEF_TRANSITION;
+    .content {
+        flex: 1;
+        p:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+    .title {
+        font-size: $BRIEF_TITLE_FONT_SIZE;
+        margin-top: $BRIEF_TITLE_MARGIN_TOP;
+        margin-bottom: $BRIEF_TITLE_MARGIN_BOTTOM;
+        transition: $BRIEF_TITLE_TRANSITION;
+    }
+    &.hover {
+        cursor: pointer;
+        &:hover {
+            background-color: $BRIEF_HOVER_BACKGROUND_COLOR;
+            color: $BRIEF_HOVER_COLOR;
+            transform: $BRIEF_HOVER_TRANSFORM;
+            box-shadow: $BRIEF_HOVER_SHADOW;
+            [class^="icon"] {
+                &::before {
+                    background-color: $BRIEF_HOVER_ICON_PSEUDO_BACKGROUND_COLOR;
+                }
+                i {
+                    color: $BRIEF_HOVER_ICON_COLOR;
+                    background-color: $BRIEF_HOVER_ICON_BACKGROUND_COLOR;
+                }
+            }
+            .title {
+                color: $BRIEF_HOVER_TITLE_COLOR;
+            }
+            span.primary {
+                color: $BRIEF_HOVER_SPAN_COLOR;
+            }
+        }
+    }
+}
+.pricing {
+    &__card {
+        // Pricing Card General Settings
+        $PRICING_BACKGROUND_COLOR: $COLOR_PRIMARY_WHITE;
+        $PRICING_BORDER_RADIUS: $RADIUS_BASE;
+        $PRICING_BORDER: none;
+        $PRICING_PADDING: 3rem 1.5rem 0 1.5rem;
+        /* stylelint-disable max-line-length */
+        $PRICING_TRANSITION: background-color .15s, color .15s, transform .15s, background-color .25s, box-shadow .33s;
+        /* stylelint-enable max-line-length */
+        $PRICING_TRANSFORM: none;
+        $PRICING_SHADOW: 0 0 0 transparent;
+
+        // Pricing Card Title Settings
+        $PRICING_TITLE_FONT_SIZE: 1.25rem;
+        $PRICING_TITLE_MARGIN_TOP: 1.5rem;
+        $PRICING_TITLE_MARGIN_BOTTOM: 1rem;
+        $PRICING_TITLE_TRANSITION: none;
+
+        // Pricing Card Hover Settings
+        $PRICING_HOVER_BACKGROUND_COLOR: $COLOR_SECONDARY;
+        $PRICING_HOVER_COLOR: $WHITE;
+        $PRICING_HOVER_TRANSFORM: scale(1.03);
+        $PRICING_HOVER_TITLE_COLOR: $WHITE;
+        $PRICING_HOVER_SPAN_COLOR: $WHITE;
+        $PRICING_HOVER_SHADOW: 0 4px 12px -2px rgba($BLACK, 30%);
+        $PRICING_HOVER_ICON_PSEUDO_BACKGROUND_COLOR: rgba($WHITE, 30%);
+        $PRICING_HOVER_ICON_COLOR: $COLOR_SECONDARY;
+        $PRICING_HOVER_ICON_BACKGROUND_COLOR: $WHITE;
+
+        // Pricing Card Not Best Offer Settings
+        $TRAIT_NOT_BEST_OFFSET: 3rem; // CARD WILL BE SMALLER BY THIS NUMBER IF IT IS NOT BEST OFFER
+
+        // Pricing Card Best Offer Settings
+        $PRICING_BEST_BACKGROUND_COLOR: $COLOR_PRIMARY;
+        $PRICING_BEST_COLOR: $WHITE;
+        $PRICING_BEST_TRANSFORM: scale(1.03);
+        $PRICING_BEST_HOVER_TRANSFORM: scale(1.05);
+        $PRICING_BEST_ICON_PSEUDO_BACKGROUND_COLOR: rgba($WHITE, 30%);
+        $PRICING_BEST_ICON_BACKGROUND_COLOR: $WHITE;
+        $PRICING_BEST_ICON_COLOR: $COLOR_PRIMARY;
+        $PRICING_BEST_TRAIT_BORDER: 1px solid rgba($WHITE, 20%);
+        $PRICING_BEST_HOVER_TRAIT_BORDER: 1px solid rgba($WHITE, 20%);
+        $PRICING_BEST_PRICE_BACKGROUND_COLOR: $COLOR_SECONDARY_PINK;
+        $PRICING_BEST_PRICE_FONT_COLOR: $WHITE;
+
+        // Pricing Card Trait General Settings
+        $TRAIT_BORDER: 1px solid rgba($BLACK, 20%);
+        $TRAIT_HOVER_BORDER: 1px solid rgba($WHITE, 20%);
+        $TRAIT_OFFSET: .5rem;
+
+        // Pricing Card Price Settings
+        $PRICING_PRICE_FONT_COLOR: $WHITE;
+        $PRICING_PRICE_FONT_SIZE: 1.25rem;
+        $PRICING_PRICE_PADDING: .5rem 2rem;
+        $PRICING_PRICE_BACKGROUND_COLOR: $COLOR_PRIMARY;
+        $PRICING_PRICE_RADIUS: $RADIUS_BASE;
+
+        // Pricing Card Price Hover Settings
+        $PRICING_HOVER_PRICE_FONT_COLOR: $COLOR_SECONDARY;
+        $PRICING_HOVER_PRICE_BACKGROUND_COLOR: $WHITE;
+        $PRICING_HOVER_PRICE_TRANSITION: background-color .15s;
+
+        // Pricing Card
+        position: relative;
+        background-color: $PRICING_BACKGROUND_COLOR;
+        border-radius: $PRICING_BORDER_RADIUS;
+        border: $PRICING_BORDER;
+        padding: $PRICING_PADDING;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transform: $PRICING_TRANSFORM;
+        box-shadow: $PRICING_SHADOW;
+        height: 100%;
+        transition: $PRICING_TRANSITION;
+        cursor: pointer;
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            p:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+        .traits {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin: 1rem 0;
+            li {
+                padding: #{$TRAIT_OFFSET} 0;
+                font-weight: 300;
+                border-bottom: $TRAIT_BORDER;
+                &:last-of-type {
+                    border-bottom: none;
+                }
+            }
+        }
+        .title {
+            font-size: $PRICING_TITLE_FONT_SIZE;
+            margin-top: $PRICING_TITLE_MARGIN_TOP;
+            margin-bottom: $PRICING_TITLE_MARGIN_BOTTOM;
+            transition: $PRICING_TITLE_TRANSITION;
+        }
+        .disclaimer {
+            font-size: 12px;
+            font-weight: 300;
+            margin-bottom: $PRICING_TITLE_MARGIN_BOTTOM;
+        }
+        &.best-value {
+            background-color: $PRICING_BEST_BACKGROUND_COLOR;
+            color: $PRICING_BEST_COLOR;
+            transform: $PRICING_BEST_TRANSFORM;
+            transform-origin: center;
+            &:hover {
+                transform: $PRICING_BEST_HOVER_TRANSFORM;
+            }
+            [class^="icon"] {
+                &::before {
+                    background-color: $PRICING_BEST_ICON_PSEUDO_BACKGROUND_COLOR;
+                }
+                i {
+                    color: $PRICING_BEST_ICON_COLOR;
+                    background-color: $PRICING_BEST_ICON_BACKGROUND_COLOR;
+                }
+            }
+            .traits {
+                li {
+                    border-bottom: $PRICING_BEST_TRAIT_BORDER;
+                }
+            }
+            .price {
+                background: $PRICING_BEST_PRICE_BACKGROUND_COLOR;
+                color: $PRICING_BEST_PRICE_FONT_COLOR;
+            }
+        }
+        .price {
+            &__box {
+                display: inline-flex;
+                margin-top: auto;
+                justify-content: center;
+                align-items: center;
+            }
+            padding: $PRICING_PRICE_PADDING;
+            font-size: $PRICING_PRICE_FONT_SIZE;
+            background-color: $PRICING_PRICE_BACKGROUND_COLOR;
+            color: $PRICING_PRICE_FONT_COLOR;
+            border-top-left-radius: $PRICING_PRICE_RADIUS;
+            border-top-right-radius: $PRICING_PRICE_RADIUS;
+            transition: $PRICING_HOVER_PRICE_TRANSITION;
+            span {
+                margin-left: .5rem;
+                font-weight: 300;
+            }
+        }
+        &:hover {
+            background-color: $PRICING_HOVER_BACKGROUND_COLOR;
+            color: $PRICING_HOVER_COLOR;
+            transform: $PRICING_HOVER_TRANSFORM;
+            box-shadow: $PRICING_HOVER_SHADOW;
+            [class^="icon"] {
+                &::before {
+                    background-color: $PRICING_HOVER_ICON_PSEUDO_BACKGROUND_COLOR;
+                }
+                i {
+                    color: $PRICING_HOVER_ICON_COLOR;
+                    background-color: $PRICING_HOVER_ICON_BACKGROUND_COLOR;
+                }
+            }
+            .title {
+                color: $PRICING_HOVER_TITLE_COLOR;
+            }
+            span.primary {
+                color: $PRICING_HOVER_SPAN_COLOR;
+            }
+            .traits {
+                li {
+                    border-bottom: $TRAIT_HOVER_BORDER;
+                }
+            }
+            .price {
+                background-color: $PRICING_HOVER_PRICE_BACKGROUND_COLOR;
+                color: $PRICING_HOVER_PRICE_FONT_COLOR;
+            }
+        }
+    }
+    &__table {
+        // Pricing Table General Settings
+        $TABLE_BACKGROUND_COLOR: $COLOR_PRIMARY_WHITE;
+        $TABLE_BORDER_RADIUS: $RADIUS_BASE;
+        $TABLE_BORDER: none;
+        $TABLE_PADDING: 2rem;
+        $TABLE_SHADOW: none;
+
+        // Pricing Table
+        background-color: $TABLE_BACKGROUND_COLOR;
+        border-radius: $TABLE_BORDER_RADIUS;
+        border: $TABLE_BORDER;
+        padding: $TABLE_PADDING;
+        box-shadow: $TABLE_SHADOW;
+        .table {
+            &-header {
+                margin-bottom: 1rem;
+                .col-2 {
+                    text-align: center;
+                }
+            }
+            &-row {
+                p {
+                    margin: 0;
+                    padding: 0;
+                }
+                .col-2 {
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                padding: .5rem 0;
+                border-bottom: 1px solid rgba($BLACK, 10%);
+                &:last-of-type {
+                    border-bottom: none;
+                }
+            }
+        }
+        .price {
+            margin-top: 1rem;
+            span {
+                margin-left: .5rem;
+                font-weight: 300;
+            }
+        }
+        @media screen and (max-width: 991px) {
+            .plan-name {
+                font-weight: 300;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+            .trait-name p {
+                font-weight: bold;
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+/* stylelint-enable no-descending-specificity */

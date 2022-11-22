@@ -1,0 +1,42 @@
+.burger {
+    // Burger General Settings
+    $BURGER_WIDTH: 30px;
+    $BURGER_HEIGHT: 30px;
+    $BURGER_LINE_HEIGHT: 2px;
+    $BURGER_LINE_RADIUS: 3px;
+
+    // Burger
+    position: relative;
+    width: $BURGER_WIDTH;
+    height: $BURGER_HEIGHT;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    div {
+        width: 100%;
+        height: $BURGER_LINE_HEIGHT;
+        border-radius: $BURGER_LINE_RADIUS;
+        background-color: $COLOR_PRIMARY;
+    }
+    &.active {
+        div {
+            opacity: 0;
+        }
+        div:first-of-type {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        div:last-of-type {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+}

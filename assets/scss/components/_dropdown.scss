@@ -1,0 +1,121 @@
+.custom-select {
+    position: relative;
+    width: 100%;
+    select {
+        display: none; // hide original SELECT element:
+    }
+}
+.select-selected {
+    background-color: transparent;
+    padding-right: 2rem !important;
+    color: $BLACK;
+    border: 2px solid rgba($BLACK, 30%) !important;
+}
+
+// style the arrow inside the select element:
+.select-selected::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    /* stylelint-disable max-line-length */
+    background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' data-prefix='fas' data-icon='chevron-up' class='svg-inline--fa fa-chevron-up fa-w-14' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%2303265D' d='m240.971 130.524 194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z' /%3E%3C/svg%3E");
+    /* stylelint-enable max-line-length */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    transition: transform .1s;
+}
+
+// point the arrow upwards when the select box is open (active):
+.select-selected.select-arrow-active::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+// style the items (options), including the selected item:
+.select-items div,
+.select-selected {
+    color: $BLACK;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 30%) transparent;
+    user-select: none;
+    cursor: pointer;
+}
+
+// style items (options):
+.select-items {
+    position: absolute;
+    background-color: $WHITE;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: scroll;
+    box-shadow: 0 4px 12px -2px rgba($BLACK, 30%);
+}
+
+// hide the items when the select box is closed:
+.select-hide {
+    display: none;
+}
+.select-items div:hover,
+.same-as-selected {
+    background-color: $COLOR_PRIMARY;
+    color: $WHITE !important;
+}
+
+// BS Dropdown
+.dropdown {
+    // Dropdown General Settings
+    $DROPDOWN_BORDER: 1px solid rgba($COLOR_PRIMARY, 30%);
+    $DROPDOWN_BORDER_RADIUS: math.div($RADIUS_BASE, 2);
+    $DROPDOWN_PADDING: 0;
+    $DROPDOWN_SHADOW: 0 4px 10px -5px rgba($COLOR_PRIMARY, 20%);
+
+    // Dropdown Item Settings
+    $DROPDOWN_ITEM_PADDING: .5rem 1rem;
+    $DROPDOWN_ITEM_FONT_WEIGHT: 400;
+    $DROPDOWN_ITEM_FONT_COLOR: $BLACK;
+    $DROPDOWN_ITEM_HOVER_COLOR: $BLACK;
+    $DROPDOWN_ITEM_ACTIVE_COLOR: $WHITE;
+    $DROPDOWN_ITEM_ALIGNMENT: left;
+    $DROPDOWN_ITEM_BACKGROUND_COLOR: transparent;
+    $DROPDOWN_ITEM_HOVER_BACKGROUND_COLOR: $COLOR_PRIMARY_WHITE;
+    $DROPDOWN_ITEM_ACTIVE_BACKGROUND_COLOR: $COLOR_PRIMARY;
+    $DROPDOWN_ITEM_BORDER: 0;
+
+    // Dropdown
+    display: inline-flex;
+    &-menu {
+        padding: $DROPDOWN_PADDING;
+        border: $DROPDOWN_BORDER;
+        border-radius: $DROPDOWN_BORDER_RADIUS;
+        overflow: hidden;
+        box-shadow: $DROPDOWN_SHADOW;
+        width: 100%;
+    }
+    &-item {
+        padding: $DROPDOWN_ITEM_PADDING;
+        font-weight: $DROPDOWN_ITEM_FONT_WEIGHT;
+        color: $DROPDOWN_ITEM_FONT_COLOR;
+        text-align: $DROPDOWN_ITEM_ALIGNMENT;
+        background-color: $DROPDOWN_ITEM_BACKGROUND_COLOR;
+        white-space: nowrap;
+        border: $DROPDOWN_ITEM_BORDER;
+        transition: background-color .15s, color .15s;
+        &.active,
+        &:active {
+            color: $DROPDOWN_ITEM_ACTIVE_COLOR !important;
+            background-color: $DROPDOWN_ITEM_ACTIVE_BACKGROUND_COLOR !important;
+        }
+        &:hover {
+            background-color: $DROPDOWN_ITEM_HOVER_BACKGROUND_COLOR;
+            color: $DROPDOWN_ITEM_HOVER_COLOR;
+        }
+    }
+}

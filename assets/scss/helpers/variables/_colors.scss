@@ -1,0 +1,74 @@
+// PRIMARY
+$COLOR_PRIMARY_ORANGE: #f7b036 !default;
+$COLOR_PRIMARY_BEIGE: #fff8ef !default;
+$COLOR_PRIMARY_WHITE: #e2ebf0 !default;
+
+// SECONDARY
+$COLOR_SECONDARY_PINK: #fa3f7b !default;
+$COLOR_SECONDARY_GREEN: #00cd9c !default;
+$COLOR_SECONDARY_WHITE: #ebebeb !default;
+
+// ESSENTIAL
+$COLOR_ESSENTIAL_WHITE: #fff !default;
+$COLOR_ESSENTIAL_BLUE: #222c52 !default;
+$COLOR_ESSENTIAL_BLACK: #000 !default;
+$COLOR_BASE_RED: #f13030 !default;
+$COLOR_BASE_YELLOW: #e5d400 !default;
+
+// GRADIENTS
+$COLOR_GRADIENT_PRIMARY: linear-gradient(
+    45deg,
+    $COLOR_PRIMARY_ORANGE 0%,
+    $COLOR_PRIMARY_BEIGE 100%
+) !default;
+$COLOR_GRADIENT_SECONDARY: linear-gradient(
+    45deg,
+    $COLOR_SECONDARY_PINK 0%,
+    $COLOR_SECONDARY_WHITE 100%
+) !default;
+$COLOR_GRADIENT_TERTIARY: linear-gradient(
+    45deg,
+    $COLOR_SECONDARY_GREEN 0%,
+    $COLOR_PRIMARY_ORANGE 100%
+) !default;
+/* stylelint-disable */
+$COLOR_GRADIENT_HOLOGRAPHIC: conic-gradient(
+        from 176.21deg at 50% 50%,
+        #000 -24.66deg,
+        #fff 0.25deg,
+        #000 50.63deg,
+        #000 51.97deg,
+        #fff 88.12deg,
+        #000 142.5deg,
+        #fff 196.87deg,
+        #000 256.87deg,
+        #fff 300deg,
+        #000 335.2deg,
+        #000 335.34deg,
+        #fff 360.25deg
+    ),
+    conic-gradient(
+        from 176.21deg at 50% 50%,
+        #000 -24.66deg,
+        #fff 0.25deg,
+        #000 50.63deg,
+        #000 51.97deg,
+        #fff 88.12deg,
+        #000 142.5deg,
+        #fff 196.87deg,
+        #000 256.87deg,
+        #fff 300deg,
+        #000 335.2deg,
+        #000 335.34deg,
+        #fff 360.25deg
+    ),
+    radial-gradient(
+        95.11% 95.11% at 36.64% 4.89%,
+        #2ad0ca 0%,
+        #e1f664 22.92%,
+        #feb0fe 46.88%,
+        #abb3fc 68.23%,
+        #5df7a4 87.5%,
+        #58c4f6 100%
+    );
+/* stylelint-enable */

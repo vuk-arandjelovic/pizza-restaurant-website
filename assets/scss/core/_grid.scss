@@ -1,0 +1,14 @@
+.row {
+    @include make-row;
+    > * {
+        @include make-col-ready;
+    }
+}
+.grid {
+    display: grid;
+    grid-template-rows: repeat(var(--#{$VARIABLE_PREFIX}rows, 1), 1fr);
+    grid-template-columns: repeat(var(--#{$VARIABLE_PREFIX}columns, #{$GRID_COLUMNS}), 1fr);
+    gap: var(--#{$VARIABLE_PREFIX}gap, #{$GRID_GUTTER_WIDTH});
+    @include make-cssgrid;
+}
+@include make-grid-columns;

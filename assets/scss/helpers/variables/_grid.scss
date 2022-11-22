@@ -1,0 +1,31 @@
+$GRID_BREAKPOINTS: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+) !default;
+$GRID_COLUMNS: 12 !default;
+$GRID_GUTTER_WIDTH: 1.5rem !default;
+$GRID_ROW_COLUMNS: 6 !default;
+$SPACER: 1rem !default;
+$VARIABLE_PREFIX: db- !default;
+$INCLUDE_COLUMN_BOX_SIZING: true !default;
+$SPACERS: (
+    0: 0,
+    1: $SPACER * .25,
+    2: $SPACER * .5,
+    3: $SPACER,
+    4: $SPACER * 1.5,
+    5: $SPACER * 3,
+) !default;
+$GUTTERS: $SPACERS !default;
+$CONTAINER_PADDING_X: $GRID_GUTTER_WIDTH * .5 !default;
+$CONTAINER_MAX_WIDTHS: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px
+) !default;

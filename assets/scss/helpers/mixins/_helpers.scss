@@ -1,0 +1,117 @@
+// Sets up font
+@mixin font-source($SIZE: false, $COLOR: false, $WEIGHT: false, $LH: false) {
+    font-family: $FONT_PRIMARY;
+    @if $SIZE {
+        font-size: $SIZE;
+    }
+    @if $COLOR {
+        color: $COLOR;
+    }
+    @if $WEIGHT {
+        font-weight: $WEIGHT;
+    }
+    @if $LH {
+        line-height: $LH;
+    }
+}
+/* stylelint-disable */
+
+// Generates selectors for input placeholder
+@mixin input-placeholder {
+    &.placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+    &::-webkit-input-placeholder {
+        @content;
+    }
+}
+/* stylelint-enable */
+
+// Generates pure css triangle
+@mixin css-triangle(
+    $COLOR,
+    $DIRECTION,
+    $SIZE: 6px,
+    $POSITION: absolute,
+    $ROUND: false
+) {
+    @include pseudo($POS: $POSITION);
+    width: 0;
+    height: 0;
+    @if $ROUND {
+        border-radius: 3px;
+    }
+    @if $DIRECTION == down {
+        border-left: $SIZE solid transparent;
+        border-right: $SIZE solid transparent;
+        border-top: $SIZE solid $COLOR;
+        margin-top: 0 - math.round(math.div($SIZE, 2.5));
+    } @else if $DIRECTION == up {
+        border-left: $SIZE solid transparent;
+        border-right: $SIZE solid transparent;
+        border-bottom: $SIZE solid $COLOR;
+        margin-bottom: 0 - math.round(math.div($SIZE, 2.5));
+    } @else if $DIRECTION == right {
+        border-top: $SIZE solid transparent;
+        border-bottom: $SIZE solid transparent;
+        border-left: $SIZE solid $COLOR;
+        margin-right: -$SIZE;
+    } @else if $DIRECTION == left {
+        border-top: $SIZE solid transparent;
+        border-bottom: $SIZE solid transparent;
+        border-right: $SIZE solid $COLOR;
+        margin-left: -$SIZE;
+    }
+}
+
+// Generates responsive ratio (supports more browsers then `aspect-ratio`
+@mixin responsive-ratio($X, $Y, $PSEUDO: false) {
+    $PADDING: string.unquote(($Y / $X) * 100 + "%");
+    @if $PSEUDO {
+        &::before {
+            @include pseudo($POS: relative);
+            width: 100%;
+            padding-top: $PADDING;
+        }
+    } @else {
+        padding-top: $PADDING;
+    }
+}
+
+// Positions element in absolute center (requires parrent to have position)
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// Generates generic pseudo element properties
+@mixin pseudo($DISPLAY: block, $POS: absolute, $CONTENT: "") {
+    content: $CONTENT;
+    display: $DISPLAY;
+    position: $POS;
+}
+
+// Makes inline animation
+@mixin inline-animation($DURATION) {
+    $NAME: inline-#{unique-id()};
+
+    /* stylelint-disable */
+    @keyframes #{$NAME} {
+        @content;
+    }
+    /* stylelint-enable */
+    animation-name: $NAME;
+    animation-duration: $DURATION;
+    animation-iteration-count: infinite;
+}

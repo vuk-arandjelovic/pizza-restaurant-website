@@ -1,0 +1,66 @@
+.loader {
+    // Loader General Settings
+    $LOADER_THICKNESS: 3px;
+    $LOADER_BACKGROUND_COLOR: rgba($WHITE, 5%);
+    $LOADER_COLOR: $COLOR_PRIMARY;
+
+    // Loader maps
+    $LOADER_SIZES: (
+        "xs": 2rem,
+        "sm": 2.5rem,
+        "md": 3rem,
+        "lg": 4rem,
+        "xl": 5rem,
+    );
+    $LOADER_THICKNESSES: (
+        "xs": 2px,
+        "sm": 3px,
+        "md": 4px,
+        "lg": 6px,
+        "xl": 8px,
+    );
+    $LOADER_SPEEDS: (
+        "fast": 1s,
+        "medium": 2s,
+        "slow": 3s,
+    );
+
+    // Loader
+    @mixin animation($speed: 6s) {
+        animation: spin $speed linear infinite;
+    }
+    @mixin thickness($size: 2px) {
+        border-width: $size;
+    }
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: $LOADER_THICKNESS solid $LOADER_BACKGROUND_COLOR;
+    border-top-color: $LOADER_COLOR;
+    @include thickness(3px);
+    @include animation;
+    @each $name, $size in $LOADER_SIZES {
+        &.size__#{$name} {
+            width: $size;
+            height: $size;
+        }
+    }
+    @each $name, $size in $LOADER_THICKNESSES {
+        &.thickness__#{$name} {
+            @include thickness($size);
+        }
+    }
+    @each $name, $speed in $LOADER_SPEEDS {
+        &.speed__#{$name} {
+            @include animation($speed);
+        }
+    }
+    &.inline {
+        display: inline;
+    }
+}
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}

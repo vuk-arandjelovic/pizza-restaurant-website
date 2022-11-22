@@ -1,0 +1,40 @@
+.search {
+    &__input {
+        display: flex;
+        border: 2px solid $COLOR_PRIMARY;
+        margin: 0 2rem;
+        padding: 1rem;
+        @media screen and (max-width: 991px) {
+            margin: unset;
+            padding: .5rem;
+        }
+        .btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 1rem;
+            @media screen and (max-width: 991px) {
+                padding: 0;
+                margin-right: .5rem;
+            }
+        }
+        input {
+            flex: 1;
+            height: 40px;
+            background-color: transparent;
+            border: none;
+            color: $COLOR_PRIMARY;
+            font-size: 1.25rem;
+            @include input-placeholder {
+                color: $WHITE;
+            }
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+    }
+}

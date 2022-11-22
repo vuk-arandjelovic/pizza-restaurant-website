@@ -1,0 +1,95 @@
+@import "./fonts";
+.pretitle {
+    color: $COLOR_PRIMARY;
+    font-weight: bold;
+    font-size: 14px;
+}
+@for $i from 1 through 6 {
+    .h#{$i} {
+        $HEADER_MARGIN_BOTTOM: 2rem;
+        font-weight: bold;
+        margin-bottom: $HEADER_MARGIN_BOTTOM;
+    }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    $HEADER_MARGIN_BOTTOM: 2rem;
+    font-weight: bold;
+    margin-bottom: $HEADER_MARGIN_BOTTOM;
+}
+p {
+    font-weight: 300;
+}
+
+// MISC
+.gradient {
+    &__primary {
+        @include text-gradient;
+        color: transparent !important;
+    }
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.text-muted {
+    color: rgba($BLACK, 80%);
+}
+mark {
+    background-color: rgba($COLOR_PRIMARY, 20%);
+}
+.weight {
+    &-100 {
+        font-weight: 100 !important;
+    }
+    &-200 {
+        font-weight: 200 !important;
+    }
+    &-300 {
+        font-weight: 300 !important;
+    }
+    &-400 {
+        font-weight: 400 !important;
+    }
+    &-500 {
+        font-weight: 500 !important;
+    }
+    &-600 {
+        font-weight: 600 !important;
+    }
+    &-700 {
+        font-weight: 700 !important;
+    }
+    &-800 {
+        font-weight: 800 !important;
+    }
+}
+.weight-normal {
+    font-weight: 400 !important;
+}
+.no-wrap {
+    white-space: nowrap;
+}
+.text {
+    &-primary {
+        color: $COLOR_PRIMARY;
+    }
+    &-secondary {
+        color: $COLOR_SECONDARY;
+    }
+    &-success {
+        color: $COLOR_SECONDARY_GREEN;
+    }
+    &-danger {
+        color: $COLOR_ERROR;
+    }
+    &-warning {
+        color: $COLOR_BASE_YELLOW;
+    }
+    &-info {
+        color: $COLOR_SECONDARY_WHITE;
+    }
+}

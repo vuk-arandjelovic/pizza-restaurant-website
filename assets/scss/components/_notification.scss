@@ -1,0 +1,51 @@
+.notification {
+    // Notifications General Settings
+    $NOTIFICATION_BACKGROUND_COLOR: $COLOR_ERROR;
+    $NOTIFICATION_FONT_COLOR: $WHITE;
+    $NOTIFICATION_SIZE: 16px;
+
+    // Notifications Sizes Map
+    $NOTIFICATION_SIZES: (
+        "xs": 12px,
+        "sm": 16px,
+        "md": 18px,
+        "lg": 24px,
+        "xl": 29px,
+    );
+
+    // Notifications
+    @each $name, $size in $NOTIFICATION_SIZES {
+        &.size__#{$name} {
+            width: $size;
+            height: $size;
+            border-radius: math.div($size, 2);
+            font-size: if((math.div($size, 2)) < 8, 0, math.div($size, 2));
+            &.pill {
+                padding-left: math.div($size, 4);
+                padding-right: math.div($size, 4);
+                width: unset;
+                min-width: $size;
+            }
+        }
+    }
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    width: $NOTIFICATION_SIZE;
+    height: $NOTIFICATION_SIZE;
+    font-size: if((math.div($NOTIFICATION_SIZE, 2)) < 5, 0, math.div($NOTIFICATION_SIZE, 2));
+    line-height: 0;
+    border-radius: math.div($NOTIFICATION_SIZE, 2);
+    background-color: $NOTIFICATION_BACKGROUND_COLOR;
+    color: $NOTIFICATION_FONT_COLOR;
+    z-index: 10;
+    &.pill {
+        padding-left: math.div($NOTIFICATION-SIZE, 5);
+        padding-right: math.div($NOTIFICATION-SIZE, 5);
+        width: unset;
+        min-width: $NOTIFICATION_SIZE;
+    }
+}
